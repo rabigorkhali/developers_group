@@ -7,7 +7,7 @@
             <h5 class="card-header">{{ $title }}</h5>
             <div class="card">
                 <div class="card-datatable table-responsive">
-                    <form method="get" action="{{ route('events.index') }}">
+                    <form method="get" action="{{ route('plots.index') }}">
                         <div class="dataTables_wrapper dt-bootstrap5 no-footer">
                             <div class="row me-2">
                                 <div class="col-md-2">
@@ -37,7 +37,7 @@
                                                     <span><i class="ti ti-filter me-1 ti-xs"></i>Filter</span>
                                                 </button>
                                                 @if(hasPermission('/' . strtolower($title) . '/*', 'put'))
-                                                    <a class="btn add-new btn-primary text-white" href="{{ route('events.create') }}">
+                                                    <a class="btn add-new btn-primary text-white" href="{{ route('plots.create') }}">
                                                         <i class="ti ti-plus me-0 me-sm-1 ti-xs"></i>
                                                         <span class="d-none d-sm-inline-block">Add</span>
                                                     </a>
@@ -83,12 +83,12 @@
                                                     </button>
                                                     <div class="dropdown-menu">
                                                         @if(hasPermission('/' . strtolower($title) . '/*', 'put'))
-                                                            <a class="dropdown-item" href="{{ route('events.edit', $event->id) }}">
+                                                            <a class="dropdown-item" href="{{ route('plots.edit', $event->id) }}">
                                                                 <i class="ti ti-pencil me-1"></i>{{ __('Edit') }}
                                                             </a>
                                                         @endif
                                                         @if(hasPermission('/' . strtolower($title) . '/*', 'delete'))
-                                                            <a href="#" class="dropdown-item delete-button" data-bs-toggle="modal" data-actionurl="{{ route('events.destroy', $event->id) }}" data-bs-target="#deleteModal">
+                                                            <a href="#" class="dropdown-item delete-button" data-bs-toggle="modal" data-actionurl="{{ route('plots.destroy', $event->id) }}" data-bs-target="#deleteModal">
                                                                 <i class="ti ti-trash me-1"></i>{{ __('Delete') }}
                                                             </a>
                                                         @endif

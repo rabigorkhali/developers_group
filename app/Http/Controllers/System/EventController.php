@@ -20,7 +20,7 @@ class EventController extends ResourceController
 
     public function moduleName()
     {
-        return 'events';
+        return 'plots';
     }
 
     public function viewFolder()

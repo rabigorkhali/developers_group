@@ -4,9 +4,9 @@
     <div class="container-xxl flex-grow-1 container-p-y">
         @include('backend.system.partials.errors')
         <div class="card mb-4">
-            <h5 class="card-header">{{ __('Create Event') }}</h5>
+            <h5 class="card-header">{{ __('Create Plot') }}</h5>
 
-            <form class="card-body" action="{{ route('events.store') }}" method="post"
+            <form class="card-body" action="{{ route('plots.store') }}" method="post"
                   enctype="multipart/form-data">
                 @csrf
                 <div class="row g-3">

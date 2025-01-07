@@ -45,7 +45,7 @@ Route::prefix(getSystemPrefix())->middleware(['auth', 'permission.routes'])->gro
     Route::resource('/teams',controller:  TeamController::class);
     Route::get('/file-manager', [\App\Http\Controllers\System\FileManagerController::class, 'index'])->name('file-manager.index');
     Route::resource('/contact-us', ContactUsController::class);
-    Route::resource('/events', EventController::class, ['except' => ['show']]);
-    Route::get('/events/delete-gallery/{id}', [EventController::class,'deleteGallery'])->name('deleteGallery');
+    Route::resource('/plots', EventController::class, ['except' => ['show']]);
+    Route::get('/plots/delete-gallery/{id}', [EventController::class,'deleteGallery'])->name('deleteGallery');
 
 });

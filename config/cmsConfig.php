@@ -75,43 +75,43 @@ return [
             ],
         ],
         [
-            'name' => ' Events',
-            'icon' => "<i class='fa fa-cube'></i>",
+            'name' => 'Plots',
+            'icon' => "<i class='fa fa-globe'></i>",
             'hasSubmodules' => false,
             'route' => $eventUrl,
-            'routeIndexName' => 'events.index',
-            'routeName' => 'events',
+            'routeIndexName' => 'plots.index',
+            'routeName' => 'plots',
             'permissions' => [
                 [
-                    'name' => 'View Event',
+                    'name' => 'View Plot',
                     'route' => [
                         'url' => $eventUrl,
                         'method' => $getMethod,
                     ],
                 ],
                 [
-                    'name' => 'Create Event',
+                    'name' => 'Create Plot',
                     'route' => [
                         'url' => $eventUrl,
                         'method' => $postMethod,
                     ],
                 ],
                 [
-                    'name' => 'Edit Event',
+                    'name' => 'Edit Plot',
                     'route' => [
                         'url' => $eventUrl . '/*',
                         'method' => $putMethod,
                     ],
                 ],
                 [
-                    'name' => 'Delete Event',
+                    'name' => 'Delete Plot',
                     'route' => [
                         'url' => $eventUrl . '/*',
                         'method' => $deleteMethod,
                     ],
                 ],
                 [
-                    'name' => 'Delete  Event Gallery',
+                    'name' => 'Delete Plot Gallery',
                     'route' => [
                         'url' => $eventUrl . '/delete-gallery/*',
                         'method' => $getMethod,
