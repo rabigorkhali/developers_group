@@ -5,7 +5,6 @@
         @include('backend.system.partials.errors')
         <div class="card mb-4">
             <h5 class="card-header">{{ $title }}</h5>
-
             <form class="card-body" action="{{ route('plots.update', $thisData->id) }}" method="post"
                   enctype="multipart/form-data">
                 @csrf
