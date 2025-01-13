@@ -18,6 +18,8 @@ class Event extends Model
         'long_description',
         'thumbnail_image',
         'status',
+        'is_featured',
+        'show_in_slider',
     ];
 
     public function galleries()

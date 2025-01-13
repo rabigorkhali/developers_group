@@ -14,14 +14,17 @@ use App\Http\Controllers\System\TeamController;
 use App\Http\Controllers\System\ContactUsController;
 use App\Http\Controllers\System\EventController;
 use App\Http\Controllers\System\MenuController;
+use \App\Http\Controllers\Public\IndexController;
 
 
 //Route::get('/', function () {
 //    return view('index');
 //});
-Route::get('/', [\App\Http\Controllers\Public\IndexController::class, 'index'])->name('index');
+/* FRONTEND */
+Route::get('/', [IndexController::class, 'index'])->name('index');
+/* END FRONTEND */
 
-
+/* BACKEND */
 Auth::routes();
 Route::get('password/reset', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
 Route::post('password/email', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
@@ -34,8 +37,8 @@ Route::prefix(getSystemPrefix())->middleware(['auth', 'permission.routes'])->gro
     Route::get('/login', [HomeController::class, 'index'])->name('home.index');
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
     Route::resource('/profile', ProfileController::class)->except(['show']);
-    Route::get('/change-password', [ProfileController::class,'changePassword'])->name('change.password');
-    Route::put('/change-password', [ProfileController::class,'changePasswordUpdate'])->name('change.password.update');
+    Route::get('/change-password', [ProfileController::class, 'changePassword'])->name('change.password');
+    Route::put('/change-password', [ProfileController::class, 'changePasswordUpdate'])->name('change.password.update');
     Route::resource('/configs', ConfigController::class)->except(['show']);//configs.index, configs.create, configs.store, configs.show, configs.edit, configs.update, configs.destroy
     Route::resource('/users', UserController::class, ['except' => ['show']]);
     Route::resource('/roles', RoleController::class, ['except' => ['show']]);
@@ -43,10 +46,11 @@ Route::prefix(getSystemPrefix())->middleware(['auth', 'permission.routes'])->gro
     Route::resource('/post-categories', PostCategoryController::class, ['except' => ['show']]);
     Route::resource('/posts', PostController::class, ['except' => ['show']]);
     Route::resource('/testimonials', TestimonialController::class);
-    Route::resource('/teams',controller:  TeamController::class);
+    Route::resource('/teams', controller: TeamController::class);
     Route::get('/file-manager', [\App\Http\Controllers\System\FileManagerController::class, 'index'])->name('file-manager.index');
     Route::resource('/contact-us', ContactUsController::class);
     Route::resource('/plots', EventController::class, ['except' => ['show']]);
-    Route::get('/plots/delete-gallery/{id}', [EventController::class,'deleteGallery'])->name('deleteGallery');
+    Route::get('/plots/delete-gallery/{id}', [EventController::class, 'deleteGallery'])->name('deleteGallery');
     Route::resource('/menus', MenuController::class, ['except' => ['show']]);
 });
+/* BACKEND */

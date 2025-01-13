@@ -29,11 +29,52 @@
                         <div class="invalid-feedback">{{ $errors->first('slug') }}</div>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label class="form-label" for="title">{{ __('Video Url') }}</label>
-                        <input required type="text" name="video_url" id="video_url" value="{{ $thisData->video_url??old('video_url') }}"
+                        <input type="url" name="video_url" id="video_url"
+                               value="{{ $thisData->video_url??old('video_url') }}"
                                class="form-control @error('video_url') is-invalid @enderror" placeholder="Video Url"/>
                         <div class="invalid-feedback">@error('video_url') {{ $message }} @enderror</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" for="is_featured">{{ __('Is Featured') }}</label>
+                        <div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input @error('is_featured') is-invalid @enderror" type="radio"
+                                       name="is_featured" id="is_featured_yes" value="1"
+                                    {{ $thisData->is_featured== 1 ? 'checked' : '' }}>
+                                <label class="form-check-label" for="is_featured_yes">{{ __('Yes') }}</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input @error('is_featured') is-invalid @enderror" type="radio"
+                                       name="is_featured" id="is_featured_no" value="0"
+                                    {{ $thisData->is_featured !== 1 ? 'checked' : '' }}>
+                                <label class="form-check-label" for="is_featured_no">{{ __('No') }}</label>
+                            </div>
+                            <div class="invalid-feedback">@error('is_featured') {{ $message }} @enderror</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label" for="show_in_slider">{{ __('Show in Slider') }}</label>
+                        <div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input @error('show_in_slider') is-invalid @enderror"
+                                       type="radio"
+                                       name="show_in_slider" id="show_in_slider_yes" value="1"
+                                    {{ $thisData->show_in_slider == 1 ? 'checked' : '' }}>
+                                <label class="form-check-label" for="show_in_slider_yes">{{ __('Yes') }}</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input @error('show_in_slider') is-invalid @enderror"
+                                       type="radio"
+                                       name="show_in_slider" id="show_in_slider_no" value="0"
+                                    {{ $thisData->show_in_slider !== 1 ? 'checked' : '' }}>
+                                <label class="form-check-label" for="show_in_slider_no">{{ __('No') }}</label>
+                            </div>
+                            <div class="invalid-feedback">@error('show_in_slider') {{ $message }} @enderror</div>
+                        </div>
                     </div>
                     <!-- Description -->
                     <div class="col-md-12">
@@ -89,11 +130,11 @@
                                              style="width: 100px; height: auto;" alt="Gallery Image">
                                         <a onclick="return confirmDelete(event, this);" href="{{route('deleteGallery',$galleryDatum->id)}}
                                         "
-                                        class="btn btn-sm btn-danger d-flex align-items-center mt-1
+                                           class="btn btn-sm btn-danger d-flex align-items-center mt-1
                                         justify-content-center"
-                                        style="width: 24px; height: 24px; padding: 0; border-radius: 50%;">
-                                        <i class="fas fa-times"></i>
-                                    </a>
+                                           style="width: 24px; height: 24px; padding: 0; border-radius: 50%;">
+                                            <i class="fas fa-times"></i>
+                                        </a>
 
                                 </div>
                             @endforeach

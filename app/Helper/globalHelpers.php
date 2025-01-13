@@ -299,13 +299,20 @@ function saveImageFromType($image, $filePath, $imageType)
             throw new Exception('Unsupported image type');
     }
 }
+
 function removeImage($dir)
 {
-    $f1 =  $dir ;
+    $f1 = $dir;
     $f2 = str_replace('.', '-medium.', $f1);
     $f3 = str_replace('.', '-small.', $f1);
-    File::delete(public_path() .'/'.$f1);
-    File::delete(public_path() .'/'.$f2);
-    File::delete(public_path() .'/'.$f3);
+    File::delete(public_path() . '/' . $f1);
+    File::delete(public_path() . '/' . $f2);
+    File::delete(public_path() . '/' . $f3);
+}
+
+function showText($text, $length = 20)
+{
+    return \Illuminate\Support\Str::words(strip_tags($text), $length, '...');
+
 }
 
